@@ -2,16 +2,19 @@ import React from 'react'
 import './style.css'
 
 interface ButtonProps {
-    width?: string;
     onClick?: () => void;
     children: React.ReactNode;
+    id?:string
 }
 
-const Button:React.FC<ButtonProps> = ({width, children, onClick}) =>{
+const Button:React.FC<ButtonProps> = ({children, onClick, id}) =>{
   return (
-    <button style={{width: width}} id='defaultButton' onClick={onClick}>
+    <div className='Button'>
+      <button onClick={onClick} id={id}>
         {children}
-    </button>
+      </button>
+    </div>
+    
   )
 }
 

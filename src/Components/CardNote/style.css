@@ -1,0 +1,23 @@
+.cardNote {
+    display: flex;
+    flex-direction: column;
+    border: .5px solid rgb(248, 192, 8);
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+#cardTitle {
+    align-self: flex-start;
+}
+
+#cardText {
+    align-self: flex-start;
+}
+
+.buttons{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+}
