@@ -2,6 +2,14 @@
   text-align: center;
 }
 
-.noteButton {
-  border: none;
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  align-self: flex-end;
 }

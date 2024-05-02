@@ -1,9 +1,7 @@
 .cardNote {
     display: flex;
     flex-direction: column;
-    border: .5px solid rgb(248, 192, 8);
     border-radius: 4px;
-    margin: 0 auto;
     padding: 1rem 2rem;
 }
 
@@ -13,6 +11,10 @@
 
 #cardText {
     align-self: flex-start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    white-space: nowrap;
 }
 
 .buttons{

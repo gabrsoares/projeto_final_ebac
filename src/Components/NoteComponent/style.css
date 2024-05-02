@@ -1,0 +1,53 @@
+.noteComponent {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 2rem auto;
+}
+
+.textArea {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+#noteTitle {
+    font-size: 3rem;
+}
+
+#noteText{
+    height: 150px;
+    resize: none;
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#noteTitle, #noteText{
+    background-color: transparent;
+    color: #fff;
+    margin-bottom: .5rem;
+    overflow: auto;
+}
+
+#noteTitle, #noteTitle:focus, #noteText, #noteText:focus {
+    border: none;
+    outline: none;
+    padding: .5rem;
+}
+
+.noteButtons {
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #333;
+}

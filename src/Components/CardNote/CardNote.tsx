@@ -1,7 +1,5 @@
 import React from "react";
 import './style.css'
-import Button from "../Button/Button";
-
 
 interface CardProps {
     title:string;
@@ -14,8 +12,6 @@ const CardNote:React.FC<CardProps> = ({title, text}) => {
             <h2 id="cardTitle">{title}</h2>
             <p id="cardText">{text}</p>
             <div className="buttons">
-                <Button>Editar</Button>
-                <Button>Excluir</Button>
             </div>
             
         </div>
