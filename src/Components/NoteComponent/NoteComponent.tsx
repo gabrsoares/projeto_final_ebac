@@ -1,49 +1,60 @@
-import React, { useState } from 'react'
-import './style.css'
-import Button from '../Button/Button'
-import { Item } from '../types'
+import React, { ChangeEvent, useContext } from 'react';
+import './style.css';
+import Button from '../Button/Button';
+import { Item } from '../types';
+import { NoteContext, NoteContextType } from '../../Contexts/NoteContext';
 
-interface NoteProps {
-    setIsNewNote: React.Dispatch<React.SetStateAction<boolean>>;
-    setNote: React.Dispatch<React.SetStateAction<Item[]>>;
-    note: Item[];
-}
+const NoteComponent: React.FC = () => {
 
-const NoteComponent:React.FC<NoteProps> = ({setIsNewNote, setNote, note}) => {
-    
-    const [title, setTitle] = useState<string>('')
-    const [text, setText] = useState<string>('')
-    const [id, setId] = useState<number>(0)
+    const context = useContext(NoteContext);
 
-    const handleChange = (event:any) => {
-        const {id, value} = event.target
+    if (!context) {
+        return (<div><h1>Conteudo não disponível.</h1></div>)
+    }
+    const { note, setNote, setIsNewNote, isEdit, setIsEdit, idUpdate, title, setTitle, text, setText } = context as NoteContextType;
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { id, value } = event.target;
 
         if (id === 'noteTitle') {
-            setTitle(value)
+            setTitle(value);
         } else {
-            setText(value)
+            setText(value);
         }
-    }
+    };
 
-    const handleCancel = () => {
-        setTitle('')
-        setText('')
+    const handleClear = () => {
+        setTitle('');
+        setText('');
         setIsNewNote(false);
-    }
+        setIsEdit(false);
+    };
+
+    const getMaxId = (): number => {
+        const noteIds = note.map(item => item.id);
+        const maxId = noteIds.length > 0 ? Math.max(...noteIds) : 0;
+        return noteIds.length === 0? 0: maxId + 1;
+    };
 
     const handleComplete = () => {
-        setId(id + 1)
-        const newId = id + 1
-
-        const newItem: Item = {
-            id: newId,
-            title: title,
-            text: text
+        if (isEdit) {
+            const index = note.findIndex((note)=>note.id === idUpdate)
+            if (index !== -1){
+                note[index].title = title
+                note[index].text = text
+            }
+        } else {
+            const newItem: Item = {
+                id: getMaxId(),
+                title: title,
+                text: text
+            };
+            setNote(prevNote => [...prevNote, newItem]);
         }
-        setNote([...note, newItem])
-        setIsNewNote(false)
-    }
-    
+        
+        handleClear();
+    };
+
     return (
         <div className='noteComponent'>
             <div className='textArea'>
@@ -51,11 +62,11 @@ const NoteComponent:React.FC<NoteProps> = ({setIsNewNote, setNote, note}) => {
                 <textarea id='noteText' placeholder='Coloque seus pensamentos aqui' value={text} onChange={handleChange}/>
             </div>
             <div className='noteButtons'>
-                <Button onClick={handleCancel}>Cancelar</Button>
+                <Button onClick={handleClear}>Cancelar</Button>
                 <Button onClick={handleComplete}>Enviar</Button>  
             </div>
         </div>
-    ) 
-}
+    );
+};
 
 export default NoteComponent;
