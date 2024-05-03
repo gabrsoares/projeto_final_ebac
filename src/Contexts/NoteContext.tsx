@@ -14,6 +14,8 @@ export interface NoteContextType {
     setTitle: React.Dispatch<React.SetStateAction<string>>;
     text: string;
     setText: React.Dispatch<React.SetStateAction<string>>;
+    filteredNotes: Item[];
+    setFilteredNotes: React.Dispatch<React.SetStateAction<Item[]>>;
 }
 
 export const NoteContext = createContext<NoteContextType | undefined>(undefined);
@@ -29,6 +31,7 @@ const NoteContextProvider: React.FC<ProviderProps> = ({ children }) => {
     const [idUpdate, setIdUpdate] = useState<number>(0);
     const [title, setTitle] = useState<string>('');
     const [text, setText] = useState<string>('');
+    const [filteredNotes, setFilteredNotes] = useState<Item[]>(note);
 
     const contextValue: NoteContextType = {
         isNewNote, setIsNewNote,
@@ -36,7 +39,8 @@ const NoteContextProvider: React.FC<ProviderProps> = ({ children }) => {
         isEdit, setIsEdit,
         idUpdate, setIdUpdate,
         title, setTitle,
-        text, setText
+        text, setText,
+        filteredNotes, setFilteredNotes
     };
 
     return (

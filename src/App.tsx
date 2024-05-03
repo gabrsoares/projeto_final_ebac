@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Button from './Components/Button/Button';
 import CardNote from './Components/CardNote/CardNote';
 import CardContainer from './Components/CardContainer/CardContainer';
 import NoteComponent from './Components/NoteComponent/NoteComponent';
 import { NoteContext } from './Contexts/NoteContext';
+import Filter from './Components/Filter/Filter';
 
 function App() {
-  const { isNewNote, setIsNewNote, note, setNote, setIsEdit, setIdUpdate, setTitle, setText } = React.useContext(NoteContext)!;
+  const { isNewNote, setIsNewNote, note, setNote, setIsEdit, setIdUpdate, setTitle, setText, filteredNotes , setFilteredNotes} = React.useContext(NoteContext)!;
+
+  useEffect(()=> {
+    setFilteredNotes(note)
+  }, [note, setFilteredNotes])
   
   const handleToggleModal = ():void => {
     setIsNewNote(isNewNote? false : true);
@@ -27,13 +32,15 @@ function App() {
   const handleDelete = (id:number):void => {
     setNote(note.filter((item) => item.id !== id))
   }
+
   
   return (
     <div className="App">
         {!isNewNote? (
           <div> 
+            <Filter/>
             <CardContainer>
-              {note.map((item) => (
+              {filteredNotes.map((item) => (
                 <div className='card' key={item.id}>
                   <CardNote title={item.title} text={item.text}/>
                   <div className='cardButtons'>
