@@ -16,6 +16,8 @@ export interface NoteContextType {
     setText: React.Dispatch<React.SetStateAction<string>>;
     filteredNotes: Item[];
     setFilteredNotes: React.Dispatch<React.SetStateAction<Item[]>>;
+    show: boolean;
+    setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const NoteContext = createContext<NoteContextType | undefined>(undefined);
@@ -32,6 +34,7 @@ const NoteContextProvider: React.FC<ProviderProps> = ({ children }) => {
     const [title, setTitle] = useState<string>('');
     const [text, setText] = useState<string>('');
     const [filteredNotes, setFilteredNotes] = useState<Item[]>(note);
+    const [show, setShow] = useState<boolean>(false);
 
     const contextValue: NoteContextType = {
         isNewNote, setIsNewNote,
@@ -40,7 +43,8 @@ const NoteContextProvider: React.FC<ProviderProps> = ({ children }) => {
         idUpdate, setIdUpdate,
         title, setTitle,
         text, setText,
-        filteredNotes, setFilteredNotes
+        filteredNotes, setFilteredNotes,
+        show, setShow
     };
 
     return (

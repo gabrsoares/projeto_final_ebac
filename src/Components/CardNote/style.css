@@ -3,6 +3,11 @@
     flex-direction: column;
     border-radius: 4px;
     padding: 1rem 2rem;
+    cursor: pointer;
+}
+
+.cardNote:hover {
+    opacity: 0.7;
 }
 
 #cardTitle {

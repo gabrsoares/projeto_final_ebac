@@ -6,47 +6,60 @@ import CardContainer from './Components/CardContainer/CardContainer';
 import NoteComponent from './Components/NoteComponent/NoteComponent';
 import { NoteContext } from './Contexts/NoteContext';
 import Filter from './Components/Filter/Filter';
+import Note from './Components/Note/Note';
 
 function App() {
-  const { isNewNote, setIsNewNote, note, setNote, setIsEdit, setIdUpdate, setTitle, setText, filteredNotes , setFilteredNotes} = React.useContext(NoteContext)!;
+  const { isNewNote, setIsNewNote, note, setNote, setIsEdit, setIdUpdate, setTitle,
+    setText, filteredNotes , setFilteredNotes, show, setShow} = React.useContext(NoteContext)!; //context com todas as variaveis necessárias
 
-  useEffect(()=> {
+  useEffect(()=> { //atualiza em tempo real a variavel filteredNotes para ficar igual a de note
     setFilteredNotes(note)
   }, [note, setFilteredNotes])
   
-  const handleToggleModal = ():void => {
+  const handleToggleModal = ():void => { //troca a tela para o modal de inserção de nota
     setIsNewNote(isNewNote? false : true);
   }
 
-  const handleEdit = (id:number) => {
-    setIsEdit(true);
-    setIdUpdate(id);
-    const index = note.findIndex((note)=>note.id === id);
+  const findId = (id:number) => {
+    const index = note.findIndex((note)=>note.id === id); // procura a posição do array onde os ids coincidem
     if (index !== -1){
       setTitle(note[index].title);
       setText(note[index].text);
     }
+  }
+
+  const handleEdit = (id:number) => { // função para editar uma nota
+    setIsEdit(true);
+    setIdUpdate(id);
+    findId(id)
     handleToggleModal();
   }
   
-  const handleDelete = (id:number):void => {
+  const handleDelete = (id:number):void => { //função para deletar uma nota
     setNote(note.filter((item) => item.id !== id))
+  }
+
+  const showNote = (id:number) => {
+    findId(id)
+    setShow(true);
   }
 
   
   return (
     <div className="App">
-        {!isNewNote? (
+        { show? <Note />
+        : !isNewNote? (
           <div> 
-            <Filter/>
+            {note.length > 0 && <Filter/>} 
             <CardContainer>
               {filteredNotes.map((item) => (
                 <div className='card' key={item.id}>
-                  <CardNote title={item.title} text={item.text}/>
-                  <div className='cardButtons'>
-                    <Button onClick={() => handleEdit(item.id)}>Editar</Button>
-                    <Button onClick={() => handleDelete(item.id)}>Excluir</Button>
-                  </div>
+                  <CardNote title={item.title} text={item.text} onClick={() => showNote(item.id)} />
+                    <div className='cardButtons'>
+                      <Button onClick={() => showNote(item.id)}>Ver</Button>
+                      <Button onClick={() => handleEdit(item.id)}>Editar</Button>
+                      <Button onClick={() => handleDelete(item.id)}>Excluir</Button>
+                    </div>
                 </div>
               ))}
             </CardContainer>

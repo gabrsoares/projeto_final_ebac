@@ -1,0 +1,14 @@
+.note {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #222;
+    width: 1000px;
+    margin: 2rem auto;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.noteTitle, .noteText {
+    align-self: flex-start;
+}

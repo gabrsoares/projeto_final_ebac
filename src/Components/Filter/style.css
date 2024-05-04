@@ -1,11 +1,21 @@
-.inputFilter {
-    background: transparent;
+.filter {
+    margin-top: 1rem;
+}
+
+.inputFilter, #filterOption {
+    background: #222;
     border: none;
     outline: none;
     padding: .5rem;
     overflow: auto;
     color: #fff;
+    border-radius: 3px;
+    margin-right: .5rem;
+    font-size: 1rem;
+}
 
+#filterOption {
+    margin-left: .5rem;
 }
 
 .inputFilter:-webkit-autofill,
