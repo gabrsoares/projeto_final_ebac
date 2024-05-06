@@ -58,8 +58,8 @@ function App() {
                   <CardNote title={item.title} text={item.text} onClick={() => showNote(item.id)} />
                     <div className='cardButtons'>
                       <Button onClick={() => showNote(item.id)}>Ver</Button>
-                      <Button onClick={() => handleEdit(item.id)}>Editar</Button>
-                      <Button onClick={() => handleDelete(item.id)}>Excluir</Button>
+                      <Button data-testid='btn-edit' onClick={() => handleEdit(item.id)}>Editar</Button>
+                      <Button data-testid='btn-remove' onClick={() => handleDelete(item.id)}>Excluir</Button>
                     </div>
                 </div>
               ))}

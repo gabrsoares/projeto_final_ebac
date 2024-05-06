@@ -19,8 +19,8 @@ const Note: React.FC = () => {
 
   return (
     <div className='note'>
-        <h1 className='noteTitle'>{title}</h1>
-        <p className='noteText'>{text}</p>
+        <h1 data-testid='noteTitle' className='noteTitle'>{title}</h1>
+        <p data-testid='noteText' className='noteText'>{text}</p>
         <div className="noteClose">
             <Button onClick={handleClose}>Fechar</Button>
         </div>
