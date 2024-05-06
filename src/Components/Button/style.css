@@ -1,4 +1,7 @@
 .Button button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: .5rem 1rem;
     font-size: 1rem;
     border-radius: 5px;
@@ -6,4 +9,5 @@
     cursor: pointer;
     min-width: 90px;
     border: none;
+    margin: 0 auto;
 }

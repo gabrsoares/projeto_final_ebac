@@ -13,3 +13,13 @@
   width: 300px;
   align-self: flex-end;
 }
+
+.newNote {
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .cardButtons {
+    align-self: center;
+  }
+}

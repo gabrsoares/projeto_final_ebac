@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
+import { IoMdAdd } from "react-icons/io";
 import Button from './Components/Button/Button';
 import CardNote from './Components/CardNote/CardNote';
 import CardContainer from './Components/CardContainer/CardContainer';
@@ -63,8 +64,8 @@ function App() {
                 </div>
               ))}
             </CardContainer>
-            <div >
-              <Button onClick={handleToggleModal}>Adicionar Nota</Button>
+            <div className='newNote'>
+              <Button onClick={handleToggleModal}><IoMdAdd style={{fontSize:'1.4rem', marginRight:".2rem"}}/>Adicionar Nota</Button>
             </div>
           </div>
         ) : <NoteComponent/>}

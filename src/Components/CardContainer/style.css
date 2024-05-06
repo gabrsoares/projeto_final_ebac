@@ -2,3 +2,27 @@
     width: 1000px;
     margin: 2rem auto;
 }
+
+@media (max-width: 1000px) {
+    .cardContainer {
+        width: 750px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cardContainer {
+        width: 590px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cardContainer {
+        width: 425px;
+    }
+}
+
+@media (max-width: 425px) {
+    .cardContainer {
+        width: 300px;
+    }
+}
