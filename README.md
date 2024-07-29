@@ -11,9 +11,9 @@ Aplicativo de anotações desenvolvido em React TypeScript, com funcionalidades 
 
 ## Tecnologias Utilizadas
 
-- **React:** Biblioteca JavaScript para construção de interfaces de usuário.
-- **TypeScript:** Superset do JavaScript que adiciona tipos estáticos ao código.
-- **Testes Unitários:** Implementação de testes para garantir a funcionalidade correta das principais features.
+- **React:**
+- **TypeScript:**
+- **Testes Unitários:**
 
 ## Como Executar o Projeto
 
