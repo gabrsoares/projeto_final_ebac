@@ -18,7 +18,7 @@ Aplicativo de anotações desenvolvido em React TypeScript, com funcionalidades 
 ## Como Executar o Projeto
 
 1. Clone este repositório: `git clone https://github.com/gabrsoares/projeto_final_ebac.git`
-2. Navegue até o diretório do projeto: `cd seu-repositorio`
+2. Navegue até o diretório do projeto.
 3. Instale as dependências: `npm install`
 4. Inicie o servidor de desenvolvimento: `npm start`
 
