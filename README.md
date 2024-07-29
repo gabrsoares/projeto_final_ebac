@@ -11,9 +11,9 @@ Aplicativo de anotações desenvolvido em React TypeScript, com funcionalidades 
 
 ## Tecnologias Utilizadas
 
-- **React:**
-- **TypeScript:**
-- **Testes Unitários:**
+- **React**
+- **TypeScript**
+- **Testes Unitários**
 
 ## Como Executar o Projeto
 
